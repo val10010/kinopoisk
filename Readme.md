@@ -1,1 +1,1 @@
-### [Preview](https://val10010.github.io/google-news/dist/)
+### [Preview](https://val10010.github.io/kinopoisk/dist/)
