@@ -37,7 +37,7 @@ export function itemsCurrentFilm(item) {
 export function itemsFetchData(film) {
   return (dispatch) => {
       dispatch(itemsIsLoading(true));
-      fetch(`http://api.tvmaze.com/search/shows?q=${film}`)
+      fetch(`https://api.tvmaze.com/search/shows?q=${film}`)
           .then((response) => {
               if (!response.ok) {
                   throw Error(response.statusText);
@@ -60,7 +60,7 @@ export function itemsFetchData(film) {
 export function itemCurrentFilm(film) {
   return (dispatch) => {
       dispatch(itemsIsLoading(true));
-      fetch(`http://api.tvmaze.com/shows/${film}`)
+      fetch(`https://api.tvmaze.com/shows/${film}`)
           .then((response) => {
               if (!response.ok) {
                   throw Error(response.statusText);
