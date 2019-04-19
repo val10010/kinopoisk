@@ -1,0 +1,36 @@
+.post-wrapper {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  background: radial-gradient(#ffeeaa, #ffaa88);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+
+.post {
+  width: 210px;
+  margin: 20px; 
+  padding: 5px;
+  box-sizing: border-box;
+  background: rgba($color: #8f8f8f87, $alpha: 0.2);
+  border-radius: 5px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 55px;
+  }
+
+  &__title  h3, h4{
+    text-align: center;
+    padding: 2px;
+  }
+
+  &__image {
+     width: 100%;
+  }
+}
