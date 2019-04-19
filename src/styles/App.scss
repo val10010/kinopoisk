@@ -14,6 +14,11 @@
   justify-content: center;
 }
 
+.home-title {
+  position: absolute;
+  top: 13%;
+}
+
 .search {
   position: absolute;
   max-width: 800px;
@@ -39,3 +44,30 @@
   }
 }
  
+
+$colour1: rgb(255,255,255); 
+$colour2: rgb(255,0,0); 
+$colour3: rgb(135,206,250); 
+$colour4: rgb(255,255,0);  
+$colour5: rgb(13, 0, 255);
+$colour6: rgb(255,255,0);  
+$colour7: rgb(135,206,250); 
+$colour8: rgb(255,0,0); 
+$colour9: rgb(255,255,255); 
+
+$colors: $colour1, $colour2, $colour3, $colour4, $colour5, $colour6, $colour7, $colour8, $colour9;
+
+@for $i from 1 through length($colors) {
+    .color-#{$i} {
+       color: rgba(nth($colors, $i), 0.6);
+       font-size: 85px;
+    }
+}
+  
+@media (max-width: 510px) {
+  @for $i from 1 through length($colors) {
+    .color-#{$i} {
+       font-size: 55px;
+    }
+ }
+}

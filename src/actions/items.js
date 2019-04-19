@@ -42,14 +42,12 @@ export function itemsFetchData(film) {
               if (!response.ok) {
                   throw Error(response.statusText);
               }
-
               dispatch(itemsIsLoading(false));
 
               return response;
           })
           .then((response) => response.json())
           .then((items) => {
-            dispatch(isHasData(true))
             dispatch(itemsAllFilms(items))
           })
           .catch(() => dispatch(itemsHasErrored(true)));
@@ -72,7 +70,7 @@ export function itemCurrentFilm(film) {
           })
           .then((response) => response.json())
           .then((item) => {
-            dispatch(isHasData(true))
+            dispatch(itemsHasErrored(false))
             dispatch(itemsCurrentFilm(item))
           })
           .catch(() => dispatch(itemsHasErrored(true)));

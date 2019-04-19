@@ -21,20 +21,30 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
+    if(!this.state.valueInput) return;
     this.setState({valueInput: ''});
     hashHistory.push(`/films/${this.state.valueInput}`);
   }
 
   render() {
     const {valueInput} = this.state;
+    let title = ['k','i','n','o','p','o','i','s','k'];
     return (
 
       <div className="home-wrapper">
+      <h2 className="home-title">
+        {
+          title.map((letter,index) => (
+            <span className={`color-${index+1}`} key={letter+index}>{letter}</span>
+          ))
+        }
+      </h2>
       <form className="search" onSubmit={this.handleSubmit}>
         <input type="text" 
             className="search__input" 
             onChange={(event) => this.handleInput(event.target.value)}  
             value={valueInput}
+            placeholder="please, enter your film name ..."
         />
       </form>
       </div>

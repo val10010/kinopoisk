@@ -30,9 +30,18 @@ class Films extends Component {
 
 
   render() {
-    const {itemsAllFilms} = this.props;
+    const {itemsAllFilms, isLoading} = this.props;
+
+    if (itemsAllFilms.length === 0) {
+      return <p className="bg info">Sorry! There was an error loading the films</p>;
+    }
+
+    if (isLoading) {
+      return <p className="bg info">Loading…</p>;
+    }
 
    return  (
+     <div className="bg">
      <div className="post-wrapper">
        {  itemsAllFilms.map(({show}) => {
           return (
@@ -45,6 +54,7 @@ class Films extends Component {
             </div>
       )
     })}
+     </div>
      </div>
     );
   }
@@ -63,7 +73,6 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    isLoading: bool => dispatch(itemsIsLoading(bool)),
     itemsFetchData: film => dispatch(itemsFetchData(film))
   };
 };

@@ -6,7 +6,7 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: center;
 }
 
 
@@ -33,4 +33,19 @@
   &__image {
      width: 100%;
   }
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  background: rgba(215, 74, 23, 0.632);
+}
+
+.info {
+  text-align: center;
+  padding: 120px;
 }

@@ -15,15 +15,25 @@ componentDidMount() {
 
 
   render() {
-    const {currentFilm} = this.props;
+    const {currentFilm, isLoading, hasErrored} = this.props;
+
+    if (hasErrored) {
+      return <p className="bg info">Sorry! There was an error loading the films</p>;
+    }
+
+    if (isLoading) {
+      return <p className="bg info">Loading…</p>;
+    }
+
     return ( 
+    <div className="bg">
      <div className="wrapper-fullpost">
         <div className="fullpost">
             <div className="fullpost__title">
                 {currentFilm.name}
             </div>
             <div className="fullpost__content">
-                <img src={currentFilm.image && currentFilm.image.medium} />
+                <img src={currentFilm.image && currentFilm.image.medium || 'http://static.tvmaze.com/uploads/images/medium_portrait/66/166413.jpg'} />
                 <div className="fullpost__content__table">
                   <table>
                     <tbody>
@@ -49,9 +59,6 @@ componentDidMount() {
                         <td>Time: </td><td>{currentFilm.runtime} min</td>
                       </tr>
                       <tr>
-                        <td>Official Site: </td> <td>{currentFilm.officialSite}</td>
-                      </tr>
-                      <tr>
                         <td>Description: </td><td  dangerouslySetInnerHTML={{ __html: currentFilm.summary}}/>
                       </tr>
                     </tbody>
@@ -59,6 +66,7 @@ componentDidMount() {
                 </div>
             </div>
         </div>
+     </div>
      </div>
     )
   }
@@ -69,6 +77,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     filmId: ownProps.params.name,
     currentFilm: state.itemCurrentFilm,
+    isLoading: state.itemsIsLoading,
+    hasErrored: state.itemsHasErrored,
   }
 }
 
