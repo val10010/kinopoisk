@@ -30,40 +30,35 @@ class Films extends Component {
   render() {
     const { itemsAllFilms, isLoading } = this.props;
 
+    if (isLoading) {
+      return <p className="bg info">Loading…</p>;
+    }
+
     if (itemsAllFilms.length === 0) {
       return (
         <p className="bg info">Sorry! There was an error loading the films</p>
       );
     }
 
-    if (isLoading) {
-      return <p className="bg info">Loading…</p>;
-    }
-
     return (
-      <div className="bg">
-        <div className="post-wrapper">
-          {itemsAllFilms.map(({ show }) => {
-            return (
-              <div
-                className="post"
-                key={show.id}
-                onClick={() => this.handleClick(show.id)}
-              >
-                <div className="post__title">
-                  <h4>{show.name}</h4>
-                  <h5>{show.type}</h5>
-                </div>
-                <img
-                  src={this.getImageSrc(show.image)}
-                  className="post__image"
-                  alt={show.name}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div>
+    <div className="bg">
+      <section className="cards">
+        {itemsAllFilms.map(({ show }) => (
+          <article
+            className="card"
+            key={show.id}
+            onClick={() => this.handleClick(show.id)}
+          >
+            <div className="card__info-hover" />
+            <img src={this.getImageSrc(show.image)} className="card__img" />
+            <div className="card__info">
+              <span className="card__category"> {show.type}</span>
+              <h3 className="card__title">{show.name}</h3>
+            </div>
+          </article>
+        ))}
+      </section>
+    </div>
     );
   }
 }
